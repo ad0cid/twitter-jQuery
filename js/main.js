@@ -1,17 +1,47 @@
+
+
 // ESTE SI FUNCIONA
 $(document).ready(function(){
 	$("textarea").keyup(function(){
+		var maxCaracteres = 140;
 		var $textoMostrar = $("textarea").val();
-		var caracteres = $textoMostrar.length;
-		console.log(caracteres);
-		if(caracteres != 0){
+		var $caracteres = $textoMostrar.length;
+		var $espacioLibre = maxCaracteres - $caracteres
+		console.log($espacioLibre);
+		console.log($caracteres);
+
+		$("#contador").text($caracteres);
+
+
+		//inicio
+		if($espacioLibre > 0){
 			$("button").removeAttr("disabled");
 		}
-		else {
+		else{
 			$("button").attr("disabled");
 		}
+
+		
+		//cambio de contador
+		if($caracteres >120 && $caracteres <=130){
+			$("#contador").css("color", "red");
+		}
+		else if($caracteres >130 && $caracteres <=139){
+			$("#contador").css("color", "blue");
+		}
+		else if($caracteres > 140){
+			$("button").attr("disabled", "true");
+			$("#contador").text($espacioLibre);
+			$("#contador").css("color", "black");
+		}
+		else{
+			$("#contador").css("color", "black");
+		}
+		
+
+		//imprimir tweet
 		$("button").click(function(){
-			$("p").text($textoMostrar);
+			$("#tweet").text($textoMostrar);
 		});
 	});
 });
