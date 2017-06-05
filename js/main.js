@@ -1,5 +1,3 @@
-
-
 // ESTE SI FUNCIONA
 $(document).ready(function(){
 	$("textarea").keyup(function(){
@@ -10,7 +8,7 @@ $(document).ready(function(){
 		console.log($espacioLibre);
 		console.log($caracteres);
 
-		$("#contador").text($caracteres);
+		$("#contador").text($espacioLibre);
 
 
 		//inicio
@@ -31,17 +29,29 @@ $(document).ready(function(){
 		}
 		else if($caracteres > 140){
 			$("button").attr("disabled", "true");
-			$("#contador").text($espacioLibre);
+			$("#contador").text($espacioLibre);	
 			$("#contador").css("color", "black");
 		}
 		else{
 			$("#contador").css("color", "black");
+		}
+
+
+		//agregar espacio al textarea
+		if($caracteres%50===0){
+			$("textarea").attr("row","3");
+		}
+		else{
+			$("textarea").attr("row","2");
 		}
 		
 
 		//imprimir tweet
 		$("button").click(function(){
 			$("#tweet").text($textoMostrar);
+			var now = new Date();
+			var outStr = now.getHours()+':'+now.getMinutes()+':'+now.getSeconds();
+   			$("#tiempo").text(outStr);
 		});
 	});
 });
@@ -53,33 +63,3 @@ $(document).ready(function(){
 
 
 
-
-
-
-
-
-
-
-	
-
-
-
-
-// $(document).ready(function(){
-// 	$("textarea").change(function(){
-// 		var $caracteres = $("textarea").val();
-// 		console.log($caracteres);
-// 		var $numeroCaracteres = Number($caracteres.length);
-// 		console.log($numeroCaracteres);
-
-// 		if($numeroCaracteres < 140){
-// 			$("button").attr("disable");
-// 		}
-// 		else if($numeroCaracteres>=120){
-// 			$("button").addClass("btn120");
-// 		}
-// 		else if($numeroCaracteres>=130 && $numeroCaracteres<140){
-// 			$("button").addClass("btn130");
-// 		}
-// 	});
-// });

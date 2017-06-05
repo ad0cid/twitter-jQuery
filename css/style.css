@@ -1,6 +1,4 @@
-.btn120{
-	 background-color: #69f0ae;
-}
-.btn130{
-	background-color: #ffd54f;
+textarea{
+	resize: none;
+	overflow: hidden;
 }
